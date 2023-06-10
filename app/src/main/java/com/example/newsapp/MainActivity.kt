@@ -1,6 +1,7 @@
 package com.example.newsapp
 
 import ProductAdapter
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,9 +33,20 @@ class MainActivity : AppCompatActivity() {
                 list = findViewById(R.id.newslistview)
                 list.adapter = adapter
                 adapter.notifyDataSetChanged()
+
+                // Öğe tıklayıcıyı burada tanımla
+                list.setOnItemClickListener { parent, view, position, id ->
+                    val clickedProduct = arr[position]
+                    val title = clickedProduct.title
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra("title", title)
+                    startActivity(intent)
+                }
             }
         }
         Thread(run).start()
+    }
+
 
 
 
@@ -46,4 +58,3 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-}

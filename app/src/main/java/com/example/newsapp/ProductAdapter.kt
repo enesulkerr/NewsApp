@@ -38,7 +38,7 @@ class ProductAdapter(context: Context, products: List<Product>) :
         // ViewHolder içerisindeki görünümlere verileri ata
         Glide.with(context)
             .load(product?.image)
-            .override(200, 100) // Genişlik: 200dp, Yükseklik: 100dp
+            .override(120, 100) // Genişlik: 200dp, Yükseklik: 100dp
             .into(viewHolder.imageView!!)
 
         viewHolder.titleTextView?.text = product?.href
